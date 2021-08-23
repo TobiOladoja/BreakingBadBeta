@@ -1,11 +1,16 @@
 import React from 'react'
+import CharacterItem from './CharacterItem'
 
 const CharacterGrid = ({ characters, isLoading }) => {
-            return isLoading ? <h1>Text Loading...</h1> : <section className="cards">
+            return isLoading ? (
+             <h1>Text Loading...</h1>
+            ) : (
+             <section className="cards">
                 {characters.map(character =>
-                    <h1 key={character.char_id}>{character.name}</h1>
+                  <CharacterItem key={character.char_id} character={character}></CharacterItem>
                 )}
-            </section>
+             </section>
+            )
 }
 
 export default CharacterGrid
