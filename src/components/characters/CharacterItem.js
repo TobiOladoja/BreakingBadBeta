@@ -1,7 +1,6 @@
 import React from 'react'
 
 const CharacterItem = ({ character }) => {
-    console.log(character)
     return (
       <div className='card'>
       <div className='card-inner'>

@@ -9,23 +9,26 @@ const App = () => {
   const [characters, setCharacters] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [searchValue, setSearchValue] = useState("")
+  const [query, setQuery] = useState("")
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://www.breakingbadapi.com/api/characters?name=${searchValue}`)
+      const result = await axios(`https://www.breakingbadapi.com/api/characters?name=${query}`)
 
       setCharacters(result.data)
       setIsLoading(false)
+      setSearchValue("")
     }
 
     fetchItems()
-  }, [searchValue])
+  }, [query])
+  
 
 
   return (
     <div className="container">
       <Header />
-      <Search setSearchValue={setSearchValue} />
+      <Search searchValue={searchValue} setSearchValue={setSearchValue} query={query} setQuery={setQuery} />
       <CharacterGrid isLoading={isLoading} characters={characters}/>
     </div>
   );

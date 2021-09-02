@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Search = ({ setSearchValue}) => {
-    const [text, setText] = useState("")
+const Search = ({ searchValue, setSearchValue, setQuery}) => {
 
     const handleChange = e => {
         const inputValue = e.target.value;
-        setText(inputValue);
+        setSearchValue(inputValue);
     }
 
     const handleSubmit = e => {
         e.preventDefault();
-        setSearchValue(text);
+        setQuery(searchValue);
     }
 
 
@@ -21,7 +20,7 @@ const Search = ({ setSearchValue}) => {
                  type="text"
                  className="form-control"
                  placeholder="Search Characters"
-                 value={text}
+                 value={searchValue}
                  onChange={handleChange}
                   />
             </form>
